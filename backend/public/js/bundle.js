@@ -90,19 +90,90 @@
 /*!*************************!*\
   !*** ./frontend/app.js ***!
   \*************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-alert("work")
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _service_bookService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./service/bookService */ "./frontend/service/bookService.js");
+__webpack_require__(/*! ./style/app.css */ "./frontend/style/app.css")
 
-__webpack_require__(/*! ./style/styles.css */ "./frontend/style/styles.css")
+
+
+
+document.getElementById("book-form")
+    .addEventListener("submit", e =>{
+        const title = document.getElementById("title").value;
+        const author = document.getElementById("author").value;
+        console.log(author)
+        const isbn = document.getElementById("isbn").value;
+        const image = document.getElementById("image").files;
+
+        const bookData = new FormData();
+       
+        bookData.append("title", title);
+        bookData.append("author", author);
+        bookData.append("isbn", isbn);
+        bookData.append("image", image[0]);
+        console.log(bookData.values)
+        
+        const bookService = new _service_bookService__WEBPACK_IMPORTED_MODULE_0__["default"]();
+        bookService.postBook(bookData);
+
+        e.preventDefault();
+
+})
 
 /***/ }),
 
-/***/ "./frontend/style/styles.css":
-/*!***********************************!*\
-  !*** ./frontend/style/styles.css ***!
-  \***********************************/
+/***/ "./frontend/service/bookService.js":
+/*!*****************************************!*\
+  !*** ./frontend/service/bookService.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+class BookSesrvice{
+    constructor(){
+        this.URI = "http://localhost:3000/api/books"
+    }
+
+    async getBooks(){
+        const response = await fethch(this.URI);
+        const books = await response.json();
+        return Books;
+    }
+    async postBook(book){
+        const res = await fetch(this.URI,{
+            method: "POST",
+            body: book
+        })
+        const data = await res.json()
+        console.log(data)
+    }
+    async deleteBook(bookId){
+        const res = await fetch(`${this.URI}/${bookId}`,{
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            method: "DELETE"
+        });
+        const data = res.json();
+        console.log(data)
+
+    }
+
+}
+/* harmony default export */ __webpack_exports__["default"] = (BookSesrvice);
+
+/***/ }),
+
+/***/ "./frontend/style/app.css":
+/*!********************************!*\
+  !*** ./frontend/style/app.css ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

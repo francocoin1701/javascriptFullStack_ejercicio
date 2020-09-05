@@ -1,1 +1,1 @@
-{"version":3,"sources":["webpack:///frontend/style/styles.css"],"names":[],"mappings":"AAAA;IACI,sBAAsB;AAC1B,C","file":"css/bundle.css","sourcesContent":["body{\r\n    background-color: aqua;\r\n}"],"sourceRoot":""}
+{"version":3,"sources":["webpack:///frontend/style/app.css"],"names":[],"mappings":"AAAA;IACI,sBAAsB;AAC1B,C","file":"css/bundle.css","sourcesContent":["body{\r\n    background-color: aqua;\r\n}"],"sourceRoot":""}

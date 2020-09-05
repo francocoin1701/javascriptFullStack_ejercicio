@@ -8,8 +8,9 @@ router.get("/",async(req,res) =>{
     res.json(books);
 });
 router.post("/",async(req,res) =>{
-    const {title, autor, isbn} = req.body;
-    const newBook = new book({title,autor,isbn});
+    const {title, author, isbn} = req.body;
+    const image = "/uploads/" + req.file.filename;
+    const newBook = new book({title,author,isbn,image});
     await newBook.save()
     console.log(newBook)
     res.json({mesage: "book save"})
